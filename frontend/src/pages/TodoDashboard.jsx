@@ -37,8 +37,8 @@ const TodoDashboard = ({ user }) => {
       setTodos([...todos, response.data]);
       setNewTodo("");
     } catch (error) {
-      console.log("Error adding todo:", error);
-      setError("Failed to add todo.");
+    console.log("Error adding todo:", error);
+    setError("Failed to add todo.");
     }
   };
 
@@ -111,7 +111,8 @@ const TodoDashboard = ({ user }) => {
           className="flex items-center gap-2 shadow-sm border border-gray-200 p-2 rounded-lg"
         >
           <input
-            className="flex-1 outline-none px-3 py-2 text-gray-700 placeholder-gray-400"
+            // The fix: Add min-w-0 to allow the input to shrink on mobile
+            className="flex-1 min-w-0 outline-none px-3 py-2 text-gray-700 placeholder-gray-400"
             type="text"
             value={newTodo}
             onChange={(e) => setNewTodo(e.target.value)}
